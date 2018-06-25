@@ -1,0 +1,60 @@
+<p>Try dragging the scrollbar.</p>
+<link href="./clusterize.css" rel="stylesheet">
+<script src='./clusterize.js'></script>
+<div class="clusterize">
+    <table>
+        <thead>
+            <tr>
+                <th>Headers</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="scrollArea" class="clusterize-scroll">
+        <table>
+            <tbody id="contentArea" class="clusterize-content">
+                <tr class="clusterize-no-data">
+                    <td>Loading data¡­</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    PATH = localStorage.getItem("ffmpea");
+    if (!PATH) {
+
+    }
+    var aRows1 = [];
+    for (var i = 1; i < 5001; ++i) {
+        //if (window.CP.shouldStopExecution(1)) { break; }
+        aRows1.push('<tr><td><button style="width:125%">Sony</button></td><td>input</td><td>input</td><td>input</td><td>input</td></tr>');
+    }
+    // window.CP.exitedLoop(1);
+
+    var clusterize1 = new Clusterize({
+        rows: aRows1,
+        scrollId: 'scrollArea',
+        contentId: 'contentArea'
+    });
+
+    //var aRows2 = [];
+    //for (var i = 1; i < 5001; ++i) {
+    //    //if (window.CP.shouldStopExecution(2)) { break; }
+    //    aRows2.push('<tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>');
+    //}
+    //// window.CP.exitedLoop(2);
+
+    //var clusterize2 = new Clusterize({
+    //    rows: aRows2,
+    //    scrollId: 'scrollArea',
+    //    contentId: 'contentArea'
+    //});
+    document.getElementById('contentArea').onclick = function (e) {
+        e = e || event;
+        var target = e.target || e.srcElement;
+        if (target.nodeName != 'INPUT') return;
+        
+        console.log("click" + target.rows);
+    }
+//# sourceURL=pen.js
+</script>
